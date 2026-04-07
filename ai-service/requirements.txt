@@ -1,0 +1,23 @@
+# FastAPI and server (Python 3.14 compatible)
+fastapi>=0.115.0
+uvicorn>=0.32.0
+pydantic>=2.10.0
+
+# Database
+asyncpg>=0.30.0
+
+# LLM - Using latest versions for better Python 3.14 support
+langchain>=0.3.0
+langchain-ollama>=0.2.0
+langchain-core>=0.3.0
+langgraph>=0.2.0
+
+# Utilities
+python-dotenv>=1.0.0
+httpx>=0.28.0
+
+# PDF generation
+reportlab>=4.2.0
+
+# Streamlit UI (optional - comment out if causing issues)
+# streamlit>=1.40.0
