@@ -70,3 +70,8 @@ frontend/.pnp.js
 # Backend specific
 backend/node_modules/
 backend/logs/
+
+# ChromaDB vector store (generated)
+chroma_sar_db/
+
+strategy.md
