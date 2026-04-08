@@ -81,7 +81,7 @@ exports.getCustomerById = async (req, res, next) => {
 
         const result = await query(
             isUuid
-                ? `SELECT * FROM customers WHERE id = $1 OR customer_id = $1`
+                ? `SELECT * FROM customers WHERE id = $1 OR customer_id = $1::text`
                 : `SELECT * FROM customers WHERE customer_id = $1`,
             [id]
         );
@@ -108,7 +108,7 @@ exports.getCustomerAccounts = async (req, res, next) => {
             isUuid
                 ? `SELECT a.* FROM accounts a
                    JOIN customers c ON a.customer_id = c.id
-                   WHERE c.id = $1 OR c.customer_id = $1
+                   WHERE c.id = $1 OR c.customer_id = $1::text
                    ORDER BY a.open_date DESC`
                 : `SELECT a.* FROM accounts a
                    JOIN customers c ON a.customer_id = c.id
@@ -135,7 +135,7 @@ exports.getCustomerTransactions = async (req, res, next) => {
         // Check if id is a valid UUID format
         const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
         const isUuid = uuidRegex.test(id);
-        const customerCondition = isUuid ? '(c.id = $1 OR c.customer_id = $1)' : 'c.customer_id = $1';
+        const customerCondition = isUuid ? '(c.id = $1 OR c.customer_id = $1::text)' : 'c.customer_id = $1';
 
         if (startDate) {
             whereClause += ` AND t.transaction_date >= $${paramIndex}`;
@@ -177,7 +177,7 @@ exports.getCustomerAlerts = async (req, res, next) => {
             isUuid
                 ? `SELECT al.* FROM alerts al
                    JOIN customers c ON al.customer_id = c.id
-                   WHERE c.id = $1 OR c.customer_id = $1
+                   WHERE c.id = $1 OR c.customer_id = $1::text
                    ORDER BY al.alert_generated_at DESC`
                 : `SELECT al.* FROM alerts al
                    JOIN customers c ON al.customer_id = c.id
@@ -203,7 +203,7 @@ exports.getCustomerProfile = async (req, res, next) => {
         // Get customer details
         const customerResult = await query(
             isUuid
-                ? `SELECT * FROM customers WHERE id = $1 OR customer_id = $1`
+                ? `SELECT * FROM customers WHERE id = $1 OR customer_id = $1::text`
                 : `SELECT * FROM customers WHERE customer_id = $1`,
             [id]
         );

@@ -11,7 +11,8 @@ import {
   Bars3Icon,
   XMarkIcon,
   ShieldCheckIcon,
-  ChevronRightIcon
+  ChevronRightIcon,
+  ShareIcon,
 } from '@heroicons/react/24/outline';
 
 const navigation = [
@@ -19,6 +20,7 @@ const navigation = [
   { name: 'Alerts', href: '/alerts', icon: BellAlertIcon, badge: true },
   { name: 'SAR Reports', href: '/sar', icon: DocumentTextIcon },
   { name: 'Customers', href: '/customers', icon: UsersIcon },
+  { name: 'Txn Graph', href: '/txn-graph', icon: ShareIcon },
   { name: 'Audit Logs', href: '/audit', icon: ClipboardDocumentListIcon, roles: ['admin', 'compliance_officer'] },
 ];
 

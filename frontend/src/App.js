@@ -12,6 +12,7 @@ import SarDetail from './pages/SarDetail';
 import Customers from './pages/Customers';
 import CustomerDetail from './pages/CustomerDetail';
 import AuditLogs from './pages/AuditLogs';
+import TransactionGraph from './pages/TransactionGraph';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="sar/:id" element={<SarDetail />} />
             <Route path="customers" element={<Customers />} />
             <Route path="customers/:id" element={<CustomerDetail />} />
+            <Route path="txn-graph" element={<TransactionGraph />} />
             <Route path="audit" element={<ProtectedRoute roles={['admin', 'compliance_officer']}><AuditLogs /></ProtectedRoute>} />
           </Route>
         </Routes>
